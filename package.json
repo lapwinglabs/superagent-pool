@@ -4,8 +4,13 @@
   "description": "automatic request pooling for superagent",
   "keywords": [],
   "author": "Matthew Mueller <mattmuelle@gmail.com>",
-  "repository": { "type": "git", "url": "git://github.com/lapwinglabs/superagent-pool.git" },
-  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lapwinglabs/superagent-pool.git"
+  },
+  "dependencies": {
+    "debug": "^2.2.0"
+  },
   "devDependencies": {
     "mocha": "*",
     "should": "*"

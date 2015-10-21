@@ -2,6 +2,7 @@
  * Module dependencies
  */
 
+var debug = require('debug')('superagent:pool')
 var qs = require('querystring')
 
 /**
@@ -34,6 +35,7 @@ function pool (superagent) {
 
     // already a request out, wait till it's response
     if (pending[key]) {
+      debug('%s already requested, waiting for another request', key)
       pending[key]
         .once('response', function(res) { fn(null, res) })
         .once('error', function(err) { fn(err) })
@@ -41,6 +43,7 @@ function pool (superagent) {
       // first request with this url, make the request with this instance
       pending[key] = this
       end.call(this, function (err, res) {
+        debug('%s finished up', key)
         delete pending[key]
         return fn(err, res)
       })
